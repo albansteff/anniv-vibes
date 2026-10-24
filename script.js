@@ -4,6 +4,19 @@ const PARTY_DATE = new Date("2026-11-20T19:00:00+01:00");
 // URL de l'application Web Google Apps Script (voir README)
 const RSVP_URL = "https://script.google.com/macros/s/AKfycbynmVdLjilTxhUIW4mQWFfgcAalNeB43qtuaAgMKObK4hAdVraihjNIr2Wzx1D4GgCIrg/exec";
 
+// --- Ajout à l'agenda ---
+// Android ne sait pas ouvrir un fichier .ics (il est juste téléchargé) :
+// on y fait pointer le bouton principal vers Google Agenda.
+if (/Android/i.test(navigator.userAgent)) {
+  const icsBtn = document.getElementById("ics-btn");
+  const gcalBtn = document.getElementById("gcal-btn");
+  icsBtn.href = gcalBtn.href;
+  icsBtn.removeAttribute("download");
+  icsBtn.target = "_blank";
+  icsBtn.rel = "noopener";
+  gcalBtn.remove();
+}
+
 // --- Compte à rebours ---
 const countdown = document.getElementById("countdown");
 const countdownDone = document.getElementById("countdown-done");
