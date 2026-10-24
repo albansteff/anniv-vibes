@@ -2,7 +2,7 @@
 const PARTY_DATE = new Date("2026-11-20T19:00:00+01:00");
 
 // URL de l'application Web Google Apps Script (voir README)
-const RSVP_URL = "";
+const RSVP_URL = "https://script.google.com/macros/s/AKfycbynmVdLjilTxhUIW4mQWFfgcAalNeB43qtuaAgMKObK4hAdVraihjNIr2Wzx1D4GgCIrg/exec";
 
 // --- Compte à rebours ---
 const countdown = document.getElementById("countdown");
