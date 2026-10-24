@@ -94,9 +94,20 @@ footer {
 }
 
 .hero-name {
-  font-size: clamp(3rem, 13vw, 7rem);
+  font-size: clamp(2.4rem, 10.5vw, 6.5rem);
   color: var(--pink);
   text-shadow: 4px 4px 0 var(--violet), 0 0 40px rgba(255, 79, 163, 0.6);
+}
+
+.hero-tag {
+  margin: 4px 0 10px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--bg);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  transform: rotate(-4deg);
+  box-shadow: 4px 4px 0 var(--violet);
 }
 
 .hero-line {

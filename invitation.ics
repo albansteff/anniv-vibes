@@ -8,13 +8,13 @@ UID:anniv-alban-28-20261120@anniv-vibes
 DTSTAMP:20261024T120000Z
 DTSTART:20261120T180000Z
 DTEND:20261121T010000Z
-SUMMARY:Anniversaire d'Alban — 28 ans 🎉
+SUMMARY:Anniversaire d'Albanito — 28 ans 🎉
 LOCATION:The Frog & Princess\, 9 rue Princesse\, 75006 Paris
 DESCRIPTION:Rendez-vous à 19h au Frog & Princess pour fêter mes 28 ans !
 BEGIN:VALARM
 TRIGGER:-PT3H
 ACTION:DISPLAY
-DESCRIPTION:Anniversaire d'Alban ce soir à 19h !
+DESCRIPTION:Anniversaire d'Albanito ce soir à 19h !
 END:VALARM
 END:VEVENT
 END:VCALENDAR
