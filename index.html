@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alban fête ses 28 ans 🎉</title>
+  <meta name="description" content="Vendredi 20 novembre, 19h, au Frog & Princess (9 rue Princesse, Paris 6e). Viens fêter mes 28 ans !">
+  <meta property="og:title" content="Alban fête ses 28 ans 🎉">
+  <meta property="og:description" content="Vendredi 20 novembre · 19h · Frog & Princess, 9 rue Princesse, Paris 6e">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#140a2e">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <header class="hero">
+    <p class="kicker">Tu es invité·e !</p>
+    <h1>
+      <span class="hero-name">Alban</span>
+      <span class="hero-line">fête ses</span>
+      <span class="hero-age">28<small>ans</small></span>
+    </h1>
+    <p class="hero-sub">Une soirée au pub, des pintes, des copains. Il ne manque plus que toi.</p>
+    <button class="btn btn-party" id="party-btn" type="button">🎉 Lancer les confettis</button>
+  </header>
+
+  <main>
+    <section class="cards" aria-label="Infos pratiques">
+      <article class="card card-pink">
+        <span class="card-icon" aria-hidden="true">📅</span>
+        <h2>Quand</h2>
+        <p class="card-big">Vendredi 20 novembre</p>
+        <p>À partir de <strong>19h</strong></p>
+      </article>
+      <article class="card card-green">
+        <span class="card-icon" aria-hidden="true">🐸</span>
+        <h2>Où</h2>
+        <p class="card-big">The Frog &amp; Princess</p>
+        <p>9 rue Princesse, Paris 6e<br>Métro Mabillon (ligne 10)</p>
+      </article>
+      <article class="card card-yellow">
+        <span class="card-icon" aria-hidden="true">👕</span>
+        <h2>Dress code</h2>
+        <p class="card-big">Aucun</p>
+        <p>Viens comme tu es, c'est tout ce qui compte.</p>
+      </article>
+    </section>
+
+    <section class="countdown-wrap" aria-labelledby="countdown-title">
+      <h2 id="countdown-title">Le compte à rebours</h2>
+      <div class="countdown" id="countdown" role="timer" aria-live="off">
+        <div class="unit"><span data-unit="days">--</span><small>jours</small></div>
+        <div class="unit"><span data-unit="hours">--</span><small>heures</small></div>
+        <div class="unit"><span data-unit="minutes">--</span><small>minutes</small></div>
+        <div class="unit"><span data-unit="seconds">--</span><small>secondes</small></div>
+      </div>
+      <p class="countdown-done" id="countdown-done" hidden>C'est maintenant ! File au Frog 🍻</p>
+      <div class="actions">
+        <a class="btn" href="invitation.ics" download>📲 Ajouter à mon agenda</a>
+        <a class="btn btn-ghost" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Anniversaire%20d%27Alban%20%E2%80%94%2028%20ans%20%F0%9F%8E%89&amp;dates=20261120T180000Z/20261121T010000Z&amp;location=The%20Frog%20%26%20Princess%2C%209%20rue%20Princesse%2C%2075006%20Paris&amp;details=Rendez-vous%20%C3%A0%2019h%20au%20Frog%20%26%20Princess%20pour%20f%C3%AAter%20mes%2028%20ans%20!">
+          Google Agenda
+        </a>
+      </div>
+    </section>
+
+    <section class="gallery-wrap" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">L'endroit</h2>
+      <p class="section-sub">Un pub-brasserie à Saint-Germain-des-Prés : bières maison, fléchettes et bonne ambiance.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://frogpubs.com/wp-content/uploads/2025/11/Beer-pour-600sq.webp" alt="Une pinte servie à la pression" loading="lazy">
+          <figcaption>Les bières maison</figcaption>
+        </figure>
+        <figure>
+          <img src="https://frogpubs.com/wp-content/uploads/2026/07/Darts-pints-600sq.webp" alt="Des pintes près d'une cible de fléchettes" loading="lazy">
+          <figcaption>Les fléchettes</figcaption>
+        </figure>
+        <figure>
+          <img src="https://frogpubs.com/wp-content/uploads/2025/10/dancers-600sq.webp" alt="Des gens qui dansent au pub" loading="lazy">
+          <figcaption>L'ambiance</figcaption>
+        </figure>
+      </div>
+      <p class="credit">Photos © <a href="https://frogpubs.com/our-pubs/the-frog-and-princess-pub-paris/" target="_blank" rel="noopener">Frog Pubs</a></p>
+    </section>
+
+    <section class="map-wrap" aria-labelledby="map-title">
+      <h2 id="map-title">Comment venir</h2>
+      <div class="map">
+        <iframe title="Carte : The Frog & Princess, 9 rue Princesse, Paris"
+                src="https://www.google.com/maps?q=The+Frog+%26+Princess,+9+rue+Princesse,+75006+Paris&amp;output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="actions">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Frog+%26+Princess,+9+rue+Princesse,+75006+Paris">🧭 Itinéraire</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hâte de vous voir 🥂 · Alban</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
