@@ -1,3 +1,7 @@
+/**
+ * @OnlyCurrentDoc Limite les autorisations du script à ce seul Sheet.
+ */
+
 // Script Google Apps Script lié au Google Sheet des réponses.
 // À coller dans Extensions → Apps Script du Sheet, puis déployer en « Application Web »
 // (Exécuter en tant que : moi · Accès : tout le monde). Voir le README.
