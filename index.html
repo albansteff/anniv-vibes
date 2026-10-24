@@ -27,7 +27,10 @@
       <span class="hero-age">28<small>ans</small></span>
     </h1>
     <p class="hero-sub">Une soirée au pub, des pintes, des copains. Il ne manque plus que toi.</p>
-    <button class="btn btn-party" id="party-btn" type="button">🎉 Lancer les confettis</button>
+    <div class="actions">
+      <a class="btn" href="#rsvp">✋ Je réponds</a>
+      <button class="btn btn-party" id="party-btn" type="button">🎉 Lancer les confettis</button>
+    </div>
   </header>
 
   <main>
@@ -67,6 +70,40 @@
            href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Anniversaire%20d%27Albanito%20%E2%80%94%2028%20ans%20%F0%9F%8E%89&amp;dates=20261120T180000Z/20261121T010000Z&amp;location=The%20Frog%20%26%20Princess%2C%209%20rue%20Princesse%2C%2075006%20Paris&amp;details=Rendez-vous%20%C3%A0%2019h%20au%20Frog%20%26%20Princess%20pour%20f%C3%AAter%20mes%2028%20ans%20!">
           Google Agenda
         </a>
+      </div>
+    </section>
+
+    <section class="rsvp-wrap" id="rsvp" aria-labelledby="rsvp-title">
+      <h2 id="rsvp-title">Tu viens ?</h2>
+      <p class="section-sub">Dis-moi si tu seras là, ça m'aide à prévoir.</p>
+
+      <form class="rsvp" id="rsvp-form" novalidate>
+        <div class="field-row">
+          <label class="field">
+            <span>Prénom</span>
+            <input type="text" name="prenom" autocomplete="given-name" maxlength="60" required>
+          </label>
+          <label class="field">
+            <span>Nom</span>
+            <input type="text" name="nom" autocomplete="family-name" maxlength="60" required>
+          </label>
+        </div>
+        <label class="field">
+          <span>Un petit mot <em>(optionnel, je suis le seul à le lire)</em></span>
+          <textarea name="commentaire" rows="3" maxlength="1000"></textarea>
+        </label>
+        <!-- Champ piège pour les robots, invisible pour les humains -->
+        <label class="hp" aria-hidden="true">Site web <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <div class="rsvp-buttons">
+          <button class="btn btn-yes" type="submit" name="reponse" value="oui">🎉 Je viens</button>
+          <button class="btn btn-ghost" type="submit" name="reponse" value="non">😢 Je viens pas</button>
+        </div>
+        <p class="rsvp-status" id="rsvp-status" role="status"></p>
+      </form>
+
+      <div class="guests" id="guests" hidden>
+        <p class="guests-count"><span id="guests-count">0</span> <span id="guests-label">personnes viennent</span></p>
+        <ul class="guests-list" id="guests-list"></ul>
       </div>
     </section>
 

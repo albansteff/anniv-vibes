@@ -311,6 +311,142 @@ main section > h2 {
   color: var(--yellow);
 }
 
+/* RSVP */
+.rsvp {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 3px solid var(--pink);
+  box-shadow: 8px 8px 0 var(--pink);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 16px;
+}
+
+.field {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.field em {
+  font-weight: 400;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--yellow);
+}
+
+.field input[aria-invalid="true"] {
+  border-color: var(--pink);
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+}
+
+.rsvp-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rsvp-buttons .btn {
+  flex: 1 1 180px;
+  justify-content: center;
+}
+
+.btn-yes {
+  background: var(--green);
+  box-shadow: 0 4px 0 #1f9d55;
+}
+
+.btn-yes:hover { box-shadow: 0 6px 0 #1f9d55; }
+.btn-yes:active { box-shadow: 0 2px 0 #1f9d55; }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.rsvp-status {
+  min-height: 1.5em;
+  margin: 16px 0 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.rsvp-status.is-error {
+  color: var(--pink);
+}
+
+.rsvp-status.is-ok {
+  color: var(--green);
+}
+
+.guests {
+  max-width: 640px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.guests-count {
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+}
+
+.guests-count #guests-count {
+  color: var(--yellow);
+  font-size: 1.6em;
+}
+
+.guests-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guests-list li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--green);
+  font-weight: 500;
+}
+
 /* Gallery */
 .gallery {
   display: grid;

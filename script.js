@@ -1,6 +1,9 @@
 // 20 novembre 2026, 19h à Paris (UTC+1 en novembre)
 const PARTY_DATE = new Date("2026-11-20T19:00:00+01:00");
 
+// URL de l'application Web Google Apps Script (voir README)
+const RSVP_URL = "";
+
 // --- Compte à rebours ---
 const countdown = document.getElementById("countdown");
 const countdownDone = document.getElementById("countdown-done");
@@ -102,6 +105,90 @@ resize();
 
 document.getElementById("party-btn").addEventListener("click", () => burst());
 window.addEventListener("load", () => setTimeout(() => burst(), 300));
+
+// --- Réponses (formulaire + liste des participants) ---
+const form = document.getElementById("rsvp-form");
+const rsvpStatus = document.getElementById("rsvp-status");
+const guests = document.getElementById("guests");
+
+function setStatus(message, type) {
+  rsvpStatus.textContent = message;
+  rsvpStatus.className = "rsvp-status" + (type ? " is-" + type : "");
+}
+
+async function loadGuests() {
+  if (!RSVP_URL) return;
+  try {
+    const res = await fetch(RSVP_URL);
+    const data = await res.json();
+    document.getElementById("guests-count").textContent = data.count;
+    document.getElementById("guests-label").textContent =
+      data.count > 1 ? "personnes viennent" : data.count === 1 ? "personne vient" : "personne pour l'instant… lance-toi !";
+    const list = document.getElementById("guests-list");
+    list.replaceChildren(
+      ...data.names.map((name) => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        return li;
+      })
+    );
+    guests.hidden = false;
+  } catch (err) {
+    console.error("Impossible de charger la liste des participants", err);
+  }
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const reponse = event.submitter ? event.submitter.value : "oui";
+  const fields = {
+    prenom: form.elements.prenom.value.trim(),
+    nom: form.elements.nom.value.trim(),
+    commentaire: form.elements.commentaire.value.trim(),
+    website: form.elements.website.value,
+    reponse,
+  };
+
+  let missing = false;
+  for (const name of ["prenom", "nom"]) {
+    const empty = !fields[name];
+    form.elements[name].setAttribute("aria-invalid", empty);
+    missing ||= empty;
+  }
+  if (missing) {
+    setStatus("Il me faut ton prénom et ton nom 🙏", "error");
+    return;
+  }
+  if (!RSVP_URL) {
+    setStatus("Le formulaire n'est pas encore branché, reviens bientôt !", "error");
+    return;
+  }
+
+  const buttons = form.querySelectorAll("button");
+  buttons.forEach((b) => (b.disabled = true));
+  setStatus("Envoi en cours…");
+  try {
+    // Corps en text/plain pour éviter la requête CORS préalable, que Apps Script ne gère pas
+    const res = await fetch(RSVP_URL, { method: "POST", body: JSON.stringify(fields) });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error);
+    form.reset();
+    if (reponse === "oui") {
+      setStatus(`Trop bien ${fields.prenom}, à vendredi 20 ! 🍻`, "ok");
+      burst();
+    } else {
+      setStatus(`Dommage ${fields.prenom}, merci d'avoir prévenu 💛`, "ok");
+    }
+    loadGuests();
+  } catch (err) {
+    console.error(err);
+    setStatus("Oups, l'envoi a échoué. Réessaie dans un instant.", "error");
+  } finally {
+    buttons.forEach((b) => (b.disabled = false));
+  }
+});
+
+loadGuests();
 
 // Si une photo hébergée chez Frog Pubs ne charge pas, on retire sa vignette
 document.querySelectorAll(".gallery img").forEach((img) => {
