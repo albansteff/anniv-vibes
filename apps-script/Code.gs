@@ -61,17 +61,20 @@ function doPost(e) {
   return json_({ ok: true });
 }
 
-// Renvoie la liste publique des participants (sans les commentaires)
+// Renvoie la liste publique des participants : prénom + initiale du nom,
+// sans les commentaires
 function doGet() {
   const rows = getSheet_().getDataRange().getValues().slice(1);
 
   // Si quelqu'un répond plusieurs fois, seule sa dernière réponse compte
   const latest = new Map();
-  for (const [, prenom, nom, reponse] of rows) {
+  for (const row of rows) {
+    const [prenom, nom] = [row[1], row[2]].map((s) => String(s).trim().replace(/^'/, ""));
     if (!prenom && !nom) continue;
-    const name = [prenom, nom].map((s) => String(s).trim().replace(/^'/, "")).join(" ");
-    latest.delete(name.toLowerCase());
-    latest.set(name.toLowerCase(), { name, vient: reponse === "Je viens" });
+    const key = (prenom + " " + nom).toLowerCase();
+    const initiale = nom ? " " + [...nom][0].toUpperCase() + "." : "";
+    latest.delete(key);
+    latest.set(key, { name: prenom + initiale, vient: row[3] === "Je viens" });
   }
 
   const names = [...latest.values()].filter((p) => p.vient).map((p) => p.name);
